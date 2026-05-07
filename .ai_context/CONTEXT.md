@@ -11,7 +11,8 @@
 - [x] Authentication Module (Login/JWT, Hashing, Middleware)
 - [x] Invitation System (Admin generating invite tokens & RBAC)
 - [x] User Management API (Pending: Registration)
-- [ ] Ticket API (Pending)
+- [x] Ticket API (CRUD & Board Logic with Ordering)
+- [ ] Labels & Comments API (Pending)
 
 ## Technical Decisions
 
@@ -20,3 +21,5 @@
 - **Auth Strategy**: ใช้ Dual-token (Access Token + HttpOnly Refresh Token) เพื่อความปลอดภัยสูงสุด
 - **Invitation Logic**: Token สุ่มแบบ Cryptographic (Hex) และกำหนดอายุ 48 ชั่วโมง
 - **Registration Flow**: ใช้ Prisma Transaction (`$transaction`) เพื่อให้มั่นใจว่าการสร้าง User และการปิดการใช้งาน Token (Invitation) ต้องสำเร็จพร้อมกันเท่านั้น
+- **Kanban Ordering**: ใช้ฟิลด์ `order` แบบ Integer ในการเก็บลำดับของ Ticket ภายในแต่ละ Status เพื่อให้ Frontend สามารถแสดงผลตามลำดับที่ผู้ใช้จัดวางได้
+- **Data Fetching**: ใช้ Eager Loading ผ่าน Prisma `include` เพื่อดึงข้อมูล Creator และ Assignee มาพร้อมกับ Ticket ในครั้งเดียว ลดปัญหา N+1 Query

@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser"; // เพิ่มตัวนี้
 import authRoutes from "./routes/auth.routes"; // นำเข้า routes
 import invitationRoutes from "./routes/invitation.routes";
 import userRoutes from "./routes/user.routes";
+import ticketRoutes from "./routes/ticket.routes";
 import { sendError } from "./utils/response";
 
 const app: Application = express();
@@ -27,6 +28,7 @@ app.use(cookieParser()); // ใช้งาน cookie-parser
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/invitations", invitationRoutes);
 app.use("/api/v1/users", userRoutes); // เพิ่มบรรทัดนี้
+app.use("/api/v1/tickets", ticketRoutes);
 
 // --- Health Check Route ---
 app.get("/api/v1/health", (req: Request, res: Response) => {

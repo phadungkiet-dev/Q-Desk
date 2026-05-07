@@ -20,3 +20,7 @@
   - Password Hashing: `bcrypt` (Salt Rounds: 10)
   - Auth: `jsonwebtoken`
   - Cookie Handling: `cookie-parser`
+- **Database Transaction**: นำมาใช้ในระบบ Registration เพื่อรักษา Data Integrity ระหว่างตาราง User และ Invitation
+- **Ticket Management**:
+  - ออกแบบ Service Layer ให้รองรับการคำนวณ `order` อัตโนมัติเมื่อมีการสร้าง Ticket ใหม่
+  - ใช้ `PATCH` method สำหรับการอัปเดตข้อมูลบางส่วน (Partial Update) เช่น การย้ายสถานะหรือเปลี่ยนลำดับ
