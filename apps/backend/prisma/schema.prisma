@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// --- Enums ---
+// การใช้ Enum ช่วยให้ข้อมูลใน DB มีมาตรฐานเดียวกัน
+enum UserRole {
+  ADMIN
+  USER
+}
+
+enum TicketStatus {
+  BACKLOG
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+// --- Models ---
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String    // จะถูก Hash ก่อนเก็บ
+  full_name     String
+  role          UserRole  @default(USER)
+  
+  // Relationships
+  created_tickets Ticket[]  @relation("CreatedBy")
+  assigned_tickets Ticket[] @relation("AssignedTo")
+  comments        Comment[]
+  
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+
+  @@map("users") // เปลี่ยนชื่อ table ใน DB เป็น snake_case
+}
+
+model Invitation {
+  id          String   @id @default(uuid())
+  email       String   @unique
+  token       String   @unique
+  is_used     String   @default("false") // ใช้ String หรือ Boolean ก็ได้ แต่แนะนำ Boolean
+  expires_at  DateTime
+  
+  created_at  DateTime @default(now())
+
+  @@map("invitations")
+}
+
+model Ticket {
+  id          String         @id @default(uuid())
+  title       String
+  description String?        @db.Text
+  status      TicketStatus   @default(BACKLOG)
+  priority    TicketPriority @default(MEDIUM)
+  order       Int            @default(0) // สำหรับจัดลำดับใน Kanban Board
+
+  // Relationships
+  creator_id  String
+  creator     User           @relation("CreatedBy", fields: [creator_id], references: [id])
+  
+  assignee_id String?
+  assignee    User?          @relation("AssignedTo", fields: [assignee_id], references: [id])
+  
+  labels      Label[]        // Many-to-Many
+  comments    Comment[]      // One-to-Many
+
+  created_at  DateTime       @default(now())
+  updated_at  DateTime       @updatedAt
+
+  @@map("tickets")
+}
+
+model Label {
+  id      String   @id @default(uuid())
+  name    String   @unique
+  color   String   // เก็บเป็น Hex code เช่น #FF5733
+  tickets Ticket[] // Many-to-Many
+
+  @@map("labels")
+}
+
+model Comment {
+  id         String   @id @default(uuid())
+  content    String   @db.Text
+  
+  // Relationships
+  ticket_id  String
+  ticket     Ticket   @relation(fields: [ticket_id], references: [id], onDelete: Cascade)
+  
+  author_id  String
+  author     User     @relation(fields: [author_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("comments")
+}
