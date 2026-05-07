@@ -10,7 +10,6 @@ router.use(authenticate);
 router.get("/", ticketController.getTickets);
 router.post("/", ticketController.createTicket);
 router.patch("/:id", ticketController.updateTicket);
-router.put("/:id", ticketController.updateTicket);
 router.delete("/:id", ticketController.deleteTicket);
 
 export default router;
