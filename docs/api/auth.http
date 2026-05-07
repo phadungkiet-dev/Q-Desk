@@ -1,8 +1,16 @@
 POST http://localhost:5000/api/v1/auth/login HTTP/1.1
-Host: localhost:5000
 Content-Type: application/json
 
 {
   "email": "admin@qdesk.com",
   "password": "Password123!"
+}
+
+###
+POST http://localhost:5000/api/v1/invitations HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3YzAwZDQ5MS04OWUxLTQ3ZDUtYmRmMy1jNzc0NTYyMmJlNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzgxNjQzOTEsImV4cCI6MTc3ODE2NTI5MX0.PeJaUWFxQ0rMv_IVSPY4nbymxFjqO4GLO24AesOhpJI
+Content-Type: application/json
+
+{ 
+  "email": "user1@example.com" 
 }
