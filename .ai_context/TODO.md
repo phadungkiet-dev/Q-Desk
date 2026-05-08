@@ -9,5 +9,5 @@
 - [x] Phase 7: Labels & Comments API
 - [x] Phase 8: Frontend Project Setup (Next.js + Tailwind v4 + Shadcn)
 - [x] Phase 9: Authentication UI (Login & Register)
-- [ ] Phase 10: Dashboard & Kanban Board UI
+- [x] Phase 10: Dashboard & Kanban Board UI
 - [ ] Phase 11: Real-time Updates & Final Polish

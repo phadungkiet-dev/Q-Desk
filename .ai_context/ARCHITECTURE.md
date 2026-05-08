@@ -37,10 +37,16 @@
   - Zustand: เก็บสถานะ Auth และ UI Global State
   - TanStack Query: จัดการ Data Fetching, Caching และ Synchronization กับ Backend API
 - **Design System**: Modern Minimalist เน้นสี Pastel และเอฟเฟกต์ Glassmorphism
-
-## Frontend Auth Implementation
-
-- **State Management**: ใช้ Zustand จัดการ accessToken และข้อมูล User ในหน่วยความจำ
-- **Form Handling**: ใช้ React Hook Form ร่วมกับ Zod สำหรับ Client-side Validation
-- **Security**: ตั้งค่า Axios ให้ส่ง withCredentials: true เพื่อรองรับ HttpOnly Refresh Token
-- **Registration**: เพิ่ม Logic ตรวจสอบความถูกต้องของ Invitation Token ก่อนอนุญาตให้ลงทะเบียน
+- **Auth Flow**:
+  - Login: รับ Access Token เก็บใน Zustand Store
+  - Persistent Session: ใช้ HttpOnly Refresh Token Cookie (จัดการผ่าน Axios withCredentials)
+- **Form Patterns**:
+  - ใช้ Schema-based validation (Zod)
+  - จัดการ Error handling ผ่าน API Response structure ที่กำหนดไว้
+- **Kanban Implementation**:
+  - ใช้ `useTickets` hook ในการ Fetch และจัดการข้อมูลผ่าน TanStack Query
+  - จัดกลุ่มข้อมูล (Grouping) ตามสถานะ Enum (BACKLOG, TODO, etc.) และเรียงลำดับด้วยฟิลด์ `order`
+  - ระบบ Drag & Drop รองรับทั้งการ Reordering และการย้ายข้าม Column (Moving)
+- **UI Components**:
+  - สร้าง Modal สำหรับ Create Ticket ที่รองรับ Multi-select Labels แบบ Many-to-Many
+  - พัฒนา Sidebar แบบ Collapsible ที่รองรับการทำงานแบบ Responsive

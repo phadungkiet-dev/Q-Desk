@@ -16,7 +16,8 @@
 - [x] Frontend Project Setup (Next.js 15+, Tailwind v4, Shadcn Nova)
 - [x] Global Styles (Pastel Palette & Glassmorphism Utility)
 - [x] Authentication UI (Login & Register with Glassmorphism)
-- [ ] Phase 10: Dashboard & Kanban Board UI (Next Step)
+- [x] Dashboard & Kanban Board UI (Completed)
+- [ ] Phase 11: Real-time Updates & Final Polish (Next Step)
 
 ## Technical Decisions
 
@@ -32,3 +33,4 @@
 - **Frontend Stack**: เลือกใช้ Next.js App Router ร่วมกับ Tailwind v4 (CSS-first configuration) เพื่อประสิทธิภาพสูงสุด
 - **Styling**: ใช้ระบบ @theme ใน CSS สำหรับจัดการ Pastel Palette และสร้าง Custom Utility `glass` สำหรับทำ Glassmorphism
 - **State Management**: ใช้ Zustand สำหรับ Client-side state และ TanStack Query สำหรับ Server-side state caching
+- **Optimistic Updates**: ใช้ระบบ Cache Invalidation ของ TanStack Query เพื่ออัปเดต UI ทันทีหลังจากการ Drag & Drop หรือสร้าง Ticket ใหม่
