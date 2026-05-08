@@ -15,7 +15,8 @@
 - [x] Labels & Comments API (Many-to-Many & Relationship logic)
 - [x] Frontend Project Setup (Next.js 15+, Tailwind v4, Shadcn Nova)
 - [x] Global Styles (Pastel Palette & Glassmorphism Utility)
-- [ ] Phase 9: Authentication UI (Next Step)
+- [x] Authentication UI (Login & Register with Glassmorphism)
+- [ ] Phase 10: Dashboard & Kanban Board UI (Next Step)
 
 ## Technical Decisions
 

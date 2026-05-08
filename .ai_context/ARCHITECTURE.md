@@ -37,3 +37,10 @@
   - Zustand: เก็บสถานะ Auth และ UI Global State
   - TanStack Query: จัดการ Data Fetching, Caching และ Synchronization กับ Backend API
 - **Design System**: Modern Minimalist เน้นสี Pastel และเอฟเฟกต์ Glassmorphism
+
+## Frontend Auth Implementation
+
+- **State Management**: ใช้ Zustand จัดการ accessToken และข้อมูล User ในหน่วยความจำ
+- **Form Handling**: ใช้ React Hook Form ร่วมกับ Zod สำหรับ Client-side Validation
+- **Security**: ตั้งค่า Axios ให้ส่ง withCredentials: true เพื่อรองรับ HttpOnly Refresh Token
+- **Registration**: เพิ่ม Logic ตรวจสอบความถูกต้องของ Invitation Token ก่อนอนุญาตให้ลงทะเบียน
