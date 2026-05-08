@@ -43,9 +43,18 @@ export const createTicket = async (data: {
 };
 
 export const updateTicket = async (id: string, data: any) => {
+  const { labelIds, ...ticketData } = data;
   return await prisma.ticket.update({
     where: { id },
-    data,
+    data: {
+      ...ticketData,
+      labels: labelIds
+        ? {
+            set: labelIds.map((labbelId: string) => ({ id: labbelId })),
+          }
+        : undefined,
+    },
+    include: { labels: true },
   });
 };
 

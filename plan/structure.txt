@@ -1,0 +1,30 @@
+Q-Desk/
+├── apps/
+│   ├── backend/             # Express.js + TypeScript
+│   │   ├── src/
+│   │   │   ├── controllers/ # รับ request/response
+│   │   │   ├── services/    # Business Logic หลัก (หัวใจของระบบ)
+│   │   │   ├── routes/      # นิยาม API Endpoints
+│   │   │   ├── middlewares/ # Auth, Error Handling, Validation
+│   │   │   ├── config/      # Database, Env variables
+│   │   │   ├── types/       # TypeScript Interfaces/Types
+│   │   │   └── utils/       # Helper functions
+│   │   ├── prisma/          # Schema และ Migration
+│   │   └── .env
+│   └── frontend/            # Next.js (App Router)
+│       ├── src/
+│       │   ├── app/         # Pages & Layouts
+│       │   ├── components/  # UI Components (Shadcn UI)
+│       │   ├── hooks/       # Custom Hooks & TanStack Query
+│       │   ├── store/       # Zustand (Global State)
+│       │   ├── services/    # API Fetching
+│       │   ├── lib/         # Shared utilities (utils.ts)
+│       │   └── types/       # Frontend Types
+│       └── .env
+├── .ai_context/             # แฟ้มข้อมูลสำหรับ AI (Long-term memory)
+│   ├── AGENTS.md
+│   ├── CONTEXT.md
+│   ├── ARCHITECTURE.md
+│   └── TODO.md
+├── docs/                    # API Specs, UX flows
+└── README.md

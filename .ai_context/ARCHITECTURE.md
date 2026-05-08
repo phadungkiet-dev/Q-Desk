@@ -10,8 +10,8 @@
 - **Users**: เก็บข้อมูลผู้ใช้งาน (UUID, Email, Password, Role: ADMIN/USER)
 - **Invitations**: ระบบ Invite-only (Token, Email, Is_used, Expires_at)
 - **Tickets**: ข้อมูล Kanban (Status: BACKLOG/TODO/IN_PROGRESS/DONE, Priority, Order)
-- **Labels**: ป้ายกำกับ (Name, Color) แบบ Many-to-Many กับ Tickets
-- **Comments**: ระบบสนทนาใน Ticket แบบ One-to-Many
+- **Labels**: ออกแบบให้เป็น Independent Master Data ที่ Ticket สามารถดึงไปใช้ได้ผ่าน Join Table (Implicit Many-to-Many)
+- **Comments**: ผูกความสัมพันธ์แบบเข้มงวดกับทั้ง User (ผู้เขียน) และ Ticket (ต้นทาง)
 
 ## Implementation Details
 
@@ -24,3 +24,6 @@
 - **Ticket Management**:
   - ออกแบบ Service Layer ให้รองรับการคำนวณ `order` อัตโนมัติเมื่อมีการสร้าง Ticket ใหม่
   - ใช้ `PATCH` method สำหรับการอัปเดตข้อมูลบางส่วน (Partial Update) เช่น การย้ายสถานะหรือเปลี่ยนลำดับ
+- **Service Layer Expansion**:
+  - `ticket.service.ts` รองรับการ Update แบบ Nested โดยใช้ `labelIds`
+  - `comment.service.ts` มีการใช้ `include` เพื่อดึงข้อมูล Profile ของผู้เขียนกลับไปให้ Frontend แสดงผลทันทีโดยไม่ต้องยิง API เพิ่ม

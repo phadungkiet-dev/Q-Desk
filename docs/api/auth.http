@@ -1,11 +1,14 @@
 POST http://localhost:5000/api/v1/auth/login HTTP/1.1
 Content-Type: application/json
 
+# {
+#   "email": "admin@qdesk.com",
+#   "password": "Password123!"
+# }
 {
-  "email": "admin@qdesk.com",
+  "email": "user1@example.com",
   "password": "Password123!"
 }
-
 ###
 POST http://localhost:5000/api/v1/invitations HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3YzAwZDQ5MS04OWUxLTQ3ZDUtYmRmMy1jNzc0NTYyMmJlNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzgxNjQzOTEsImV4cCI6MTc3ODE2NTI5MX0.PeJaUWFxQ0rMv_IVSPY4nbymxFjqO4GLO24AesOhpJI
@@ -24,4 +27,56 @@ Content-Type: application/json
     "password": "Password123!",
     "fullName": "Test User1",
     "token": "9d1d0a494ab8aecee5e078bf7b35cff4"
+}
+
+###
+POST http://localhost:5000/api/v1/tickets HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmZWYzNjA1OC02MTA2LTQyYTktODg2Yi05ZTBjZmMzNTUxMTUiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3ODE3MTY3NywiZXhwIjoxNzc4MTcyNTc3fQ.yxVo9BZmNlnYpfReczzz5SNep3xIm08UgjeD9mKDrfE
+
+{
+    "title": "Setup Project",
+    "status": "TODO"
+}
+
+###
+GET http://localhost:5000/api/v1/tickets HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmZWYzNjA1OC02MTA2LTQyYTktODg2Yi05ZTBjZmMzNTUxMTUiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3ODIwNjc1MiwiZXhwIjoxNzc4MjA3NjUyfQ.z3xDezuVFcKc8P0np7p_QOxkM17iUNkkR4wQhWkOKS0
+
+###
+PATCH http://localhost:5000/api/v1/tickets/e1c0956b-c037-4256-b0ab-a7867e4c35c7 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmZWYzNjA1OC02MTA2LTQyYTktODg2Yi05ZTBjZmMzNTUxMTUiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3ODE3MTY3NywiZXhwIjoxNzc4MTcyNTc3fQ.yxVo9BZmNlnYpfReczzz5SNep3xIm08UgjeD9mKDrfE
+
+{
+    "status": "DONE"
+}
+
+###
+POST http://localhost:5000/api/v1/labels HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmZWYzNjA1OC02MTA2LTQyYTktODg2Yi05ZTBjZmMzNTUxMTUiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3ODIwNjc1MiwiZXhwIjoxNzc4MjA3NjUyfQ.z3xDezuVFcKc8P0np7p_QOxkM17iUNkkR4wQhWkOKS0
+
+{
+  "name": "Bug",
+  "color": "#EF4444"
+}
+
+###
+PATCH http://localhost:5000/api/v1/tickets/e1c0956b-c037-4256-b0ab-a7867e4c35c7 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmZWYzNjA1OC02MTA2LTQyYTktODg2Yi05ZTBjZmMzNTUxMTUiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3ODIwNjc1MiwiZXhwIjoxNzc4MjA3NjUyfQ.z3xDezuVFcKc8P0np7p_QOxkM17iUNkkR4wQhWkOKS0
+
+{
+  "labelIds": ["8972e17d-00c1-4ea6-97c1-887a5cc1dd8b"]
+}
+
+###
+POST http://localhost:5000/api/v1/comments HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmZWYzNjA1OC02MTA2LTQyYTktODg2Yi05ZTBjZmMzNTUxMTUiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3ODIwNjc1MiwiZXhwIjoxNzc4MjA3NjUyfQ.z3xDezuVFcKc8P0np7p_QOxkM17iUNkkR4wQhWkOKS0
+
+{
+  "content": "ตัวงานส่วนนี้กำลังดำเนินการครับ ติดปัญหาเรื่อง Library นิดหน่อย",
+  "ticketId": "e1c0956b-c037-4256-b0ab-a7867e4c35c7"
 }

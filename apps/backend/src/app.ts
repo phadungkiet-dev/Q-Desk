@@ -7,6 +7,8 @@ import authRoutes from "./routes/auth.routes"; // นำเข้า routes
 import invitationRoutes from "./routes/invitation.routes";
 import userRoutes from "./routes/user.routes";
 import ticketRoutes from "./routes/ticket.routes";
+import labelRoutes from "./routes/label.routes";
+import commentRoutes from "./routes/comment.routes";
 import { sendError } from "./utils/response";
 
 const app: Application = express();
@@ -29,6 +31,8 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/invitations", invitationRoutes);
 app.use("/api/v1/users", userRoutes); // เพิ่มบรรทัดนี้
 app.use("/api/v1/tickets", ticketRoutes);
+app.use("/api/v1/labels", labelRoutes);
+app.use("/api/v1/comments", commentRoutes);
 
 // --- Health Check Route ---
 app.get("/api/v1/health", (req: Request, res: Response) => {
