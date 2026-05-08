@@ -28,3 +28,19 @@ Q-Desk/
 │   └── TODO.md
 ├── docs/                    # API Specs, UX flows
 └── README.md
+
+
+frontend/
+├── src/
+│   ├── app/              # (App Router) Pages, Layouts, Loading
+│   ├── components/       # UI Components
+│   │   ├── ui/           # Shadcn UI (Atomic components)
+│   │   ├── shared/       # Reusable components (Navbar, Sidebar)
+│   │   └── kanban/       # Domain-specific components
+│   ├── hooks/            # Custom Hooks (useAuth, useTickets)
+│   ├── services/         # API fetching logic (Axios instance)
+│   ├── store/            # Zustand stores
+│   ├── lib/              # Utilities (utils.ts, constants)
+│   └── types/            # TypeScript definitions
+├── tailwind.config.ts    # สำหรับตั้งค่า Pastel Colors
+└── .env.local            # NEXT_PUBLIC_API_URL

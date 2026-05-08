@@ -13,7 +13,9 @@
 - [x] User Management API (Pending: Registration)
 - [x] Ticket API (CRUD & Board Logic with Ordering)
 - [x] Labels & Comments API (Many-to-Many & Relationship logic)
-- [ ] Frontend Project Setup (Next Step)
+- [x] Frontend Project Setup (Next.js 15+, Tailwind v4, Shadcn Nova)
+- [x] Global Styles (Pastel Palette & Glassmorphism Utility)
+- [ ] Phase 9: Authentication UI (Next Step)
 
 ## Technical Decisions
 
@@ -26,3 +28,6 @@
 - **Data Fetching**: ใช้ Eager Loading ผ่าน Prisma `include` เพื่อดึงข้อมูล Creator และ Assignee มาพร้อมกับ Ticket ในครั้งเดียว ลดปัญหา N+1 Query
 - **Many-to-Many Management**: การจัดการ Labels ใน Ticket ใช้กลไก `set` ของ Prisma เพื่อทำการล้างและอัปเดตความสัมพันธ์ใหม่ทั้งหมดในคำสั่งเดียว ช่วยให้ Logic ที่ Frontend ง่ายขึ้น
 - **Data Integrity**: ตั้งค่า `onDelete: Cascade` สำหรับ Comments เพื่อให้เมื่อ Ticket ถูกลบ ข้อมูลคอมเมนต์จะถูกทำความสะอาดโดยอัตโนมัติจาก Database
+- **Frontend Stack**: เลือกใช้ Next.js App Router ร่วมกับ Tailwind v4 (CSS-first configuration) เพื่อประสิทธิภาพสูงสุด
+- **Styling**: ใช้ระบบ @theme ใน CSS สำหรับจัดการ Pastel Palette และสร้าง Custom Utility `glass` สำหรับทำ Glassmorphism
+- **State Management**: ใช้ Zustand สำหรับ Client-side state และ TanStack Query สำหรับ Server-side state caching

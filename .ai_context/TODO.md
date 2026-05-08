@@ -7,6 +7,7 @@
 - [x] Phase 5: User Management API (Registration using invite token)
 - [x] Phase 6: Ticket API (CRUD & Board Logic)
 - [x] Phase 7: Labels & Comments API
-- [ ] Phase 8: Frontend Project Setup (Next.js + Tailwind + Shadcn)
+- [x] Phase 8: Frontend Project Setup (Next.js + Tailwind v4 + Shadcn)
 - [ ] Phase 9: Authentication UI (Login & Register)
 - [ ] Phase 10: Dashboard & Kanban Board UI
+- [ ] Phase 11: Real-time Updates & Final Polish

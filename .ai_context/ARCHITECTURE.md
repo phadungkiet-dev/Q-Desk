@@ -27,3 +27,13 @@
 - **Service Layer Expansion**:
   - `ticket.service.ts` รองรับการ Update แบบ Nested โดยใช้ `labelIds`
   - `comment.service.ts` มีการใช้ `include` เพื่อดึงข้อมูล Profile ของผู้เขียนกลับไปให้ Frontend แสดงผลทันทีโดยไม่ต้องยิง API เพิ่ม
+
+## Frontend Architecture
+
+- **Framework**: Next.js (App Router)
+- **Styling**: Tailwind CSS v4 + Shadcn UI (Nova Preset)
+- **API Client**: Axios instance พร้อมจัดการ Base URL และ Credentials
+- **State Management**:
+  - Zustand: เก็บสถานะ Auth และ UI Global State
+  - TanStack Query: จัดการ Data Fetching, Caching และ Synchronization กับ Backend API
+- **Design System**: Modern Minimalist เน้นสี Pastel และเอฟเฟกต์ Glassmorphism
